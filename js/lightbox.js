@@ -9,6 +9,7 @@ const Lightbox = (() => {
   let currentIndex = 0;
   let images = [];
   let isOpen = false;
+  let lastFocusedEl = null;
 
   /**
    * Creates the lightbox DOM elements and appends to body.
@@ -18,6 +19,9 @@ const Lightbox = (() => {
     lightboxEl = document.createElement('div');
     lightboxEl.className = 'lightbox';
     lightboxEl.id = 'lightbox';
+    lightboxEl.setAttribute('role', 'dialog');
+    lightboxEl.setAttribute('aria-modal', 'true');
+    lightboxEl.setAttribute('aria-label', 'Image lightbox');
     lightboxEl.innerHTML = `
       <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
       <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
@@ -80,9 +84,13 @@ const Lightbox = (() => {
     currentIndex = index;
     updateImage();
 
+    lastFocusedEl = document.activeElement;
     lightboxEl.classList.add('active');
     document.body.style.overflow = 'hidden';
     isOpen = true;
+
+    // Move focus into the lightbox
+    lightboxEl.querySelector('.lightbox-close').focus();
   }
 
   /** Closes the lightbox */
@@ -92,6 +100,12 @@ const Lightbox = (() => {
     lightboxEl.classList.remove('active');
     document.body.style.overflow = '';
     isOpen = false;
+
+    // Return focus to the element that triggered the lightbox
+    if (lastFocusedEl) {
+      lastFocusedEl.focus();
+      lastFocusedEl = null;
+    }
   }
 
   /** Shows the previous image (wraps around) */

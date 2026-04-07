@@ -10,11 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.querySelector('.nav-menu');
 
   if (navToggle && navMenu) {
+    navToggle.setAttribute('aria-expanded', 'false');
+
     navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      const isOpen = navMenu.classList.toggle('active');
       navToggle.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       // Prevent body scroll when menu is open
-      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     // Close menu when a nav link is clicked
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });

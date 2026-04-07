@@ -87,6 +87,7 @@
   <script>
     // Load featured images on home page
     document.addEventListener('DOMContentLoaded', () => {
+      loadPrimaryHeroImage('.hero');
       renderGallery('featured-grid', 'featured', {
         thumbWidth: 800,
         showOverlay: true,

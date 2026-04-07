@@ -98,12 +98,16 @@ async function renderGallery(containerId, tag, options = {}) {
     const item = document.createElement('div');
     item.className = 'gallery-item';
     item.setAttribute('data-index', index);
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
 
     // Extract a display name from the public_id (remove folder prefix, replace dashes/underscores)
     const displayName = image.public_id
       .split('/').pop()
       .replace(/[-_]/g, ' ')
       .replace(/\b\w/g, c => c.toUpperCase());
+
+    item.setAttribute('aria-label', displayName);
 
     const thumbUrl = cloudinaryUrl(image.public_id, {
       width: thumbWidth,
@@ -126,10 +130,48 @@ async function renderGallery(containerId, tag, options = {}) {
 
     if (onClick) {
       item.addEventListener('click', () => onClick(index, images));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(index, images);
+        }
+      });
     }
 
     container.appendChild(item);
   });
 
   return images;
+}
+
+/**
+ * Fetches the image tagged "primary" and sets it as the background of the
+ * given element. Falls back to the CSS background-color if no image is found.
+ * Logs a warning if more than one image carries the "primary" tag.
+ *
+ * @param {string} selector - CSS selector for the hero element (e.g. '.hero')
+ */
+async function loadPrimaryHeroImage(selector) {
+  const element = document.querySelector(selector);
+  if (!element) {
+    console.error(`[Portfolio] loadPrimaryHeroImage: element "${selector}" not found`);
+    return;
+  }
+
+  const images = await fetchImagesByTag('primary');
+
+  if (images.length === 0) return;
+
+  if (images.length > 1) {
+    console.warn(`[Portfolio] Warning: ${images.length} images tagged "primary". Using the first one.`);
+  }
+
+  const url = cloudinaryUrl(images[0].public_id, {
+    width: 1920,
+    crop: 'limit',
+    quality: 'auto',
+    format: 'auto',
+  });
+
+  element.style.backgroundImage = `url('${url}')`;
 }

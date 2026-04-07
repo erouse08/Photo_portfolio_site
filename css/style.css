@@ -419,7 +419,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://picsum.photos/1920/1080?grayscale');
+  background-color: var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

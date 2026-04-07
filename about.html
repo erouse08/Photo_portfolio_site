@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about the photographer">
+  <title>About — Photography Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-logo" data-content="site.photographerName">Your Name</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="#" class="nav-link nav-instagram" target="_blank" rel="noopener" data-content-href="site.instagramUrl" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+    <section class="about-page">
+      <h1 class="section-heading page-title" data-content="about.heading">About</h1>
+
+      <!-- Bio Section -->
+      <div class="about-bio container">
+        <div class="about-image reveal-on-scroll">
+          <img src="https://picsum.photos/600/800?grayscale" alt="Photographer portrait">
+        </div>
+        <div class="about-text reveal-on-scroll">
+          <h2 class="about-name" data-content="about.name">Your Name</h2>
+          <div class="about-bio-text" data-content="about.bio">
+            <p>Bio paragraph placeholder...</p>
+          </div>
+          <div class="about-details">
+            <p class="about-location">
+              <span class="detail-label">Location:</span>
+              <span data-content="about.location">Your City, Country</span>
+            </p>
+            <p class="about-specialties">
+              <span class="detail-label">Specialties:</span>
+              <span data-content="about.specialties">Landscape | Portrait | Street</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="about-contact reveal-on-scroll">
+        <h2 class="about-contact-heading" data-content="about.contactHeading">Get in Touch</h2>
+        <a href="#" class="btn" data-content="about.contactButtonText" data-content-href="about.contactEmail">Say Hello</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content container">
+      <p class="footer-copyright" data-content="footer.copyright">&copy; 2026 Your Name. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" target="_blank" rel="noopener" data-content-href="site.instagramUrl" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#" class="footer-social-link" data-content-href="about.contactEmail" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/content.js"></script>
+  <script src="js/cloudinary.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

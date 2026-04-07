@@ -1,0 +1,30 @@
+{
+  "site": {
+    "photographerName": "Your Name",
+    "instagramUrl": "https://instagram.com/yourhandle"
+  },
+  "home": {
+    "heroTagline": "Capturing Moments",
+    "heroButtonText": "View Gallery",
+    "featuredHeading": "Featured Work",
+    "ctaHeading": "Explore the full collection",
+    "ctaButtonText": "Go to Gallery"
+  },
+  "about": {
+    "heading": "About",
+    "name": "Your Name",
+    "bio": [
+      "First paragraph about your background and journey into photography...",
+      "Second paragraph about your style, approach, and what inspires you...",
+      "Third paragraph about your experience, exhibitions, or press..."
+    ],
+    "specialties": "Landscape | Portrait | Street",
+    "location": "Your City, Country",
+    "contactHeading": "Get in Touch",
+    "contactButtonText": "Say Hello",
+    "contactEmail": "you@email.com"
+  },
+  "footer": {
+    "copyright": "\u00a9 2026 Your Name. All rights reserved."
+  }
+}
